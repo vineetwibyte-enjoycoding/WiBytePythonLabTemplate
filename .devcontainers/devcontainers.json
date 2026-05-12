@@ -8,12 +8,23 @@
     "customizations": {
         "vscode": {
             "settings": {
-                // These lines turn off the "Ghost Writing" 
-                // even if the student's account tries to turn it on.
-                "editor.inlineSuggest.enabled": false,
-                "github.copilot.editor.enableAutoCompletions": false,
-                "github.copilot.inlineSuggest.enable": false
-            }
+    // 1. DISBALE THE GHOST TEXT (Already done)
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.inlineSuggest.enable": false,
+
+    // 2. DISABLE THE "FIX IT FOR ME" MECHANIC (The Keep/Undo window)
+    // This stops the AI from suggesting fixes directly on the lines of code
+    "github.copilot.editor.enableCodeActions": false,
+    "github.copilot.chat.editor.enableCodeActions": false,
+    
+    // 3. DISABLE THE "CMD+I" INLINE CHAT
+    // This prevents students from opening a chat bubble inside the code window
+    "github.copilot.editor.enableInlineChat": false,
+
+    // 4. THE REPLIT LAYOUT (Keeps it familiar and fast)
+    "workbench.panel.defaultLocation": "right"
+            }            
         }
     }
 }
