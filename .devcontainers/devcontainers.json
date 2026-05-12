@@ -1,40 +1,19 @@
 {
-  "name": "WiByte Logic Lab",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylint",
-        "github.copilot",
-        "github.copilot-chat"
-      ],
-      "settings": {
-        // --- THE LOGIC MUSCLE GUARDRAILS ---
-        
-        // Disable the "Ghost Text" that finishes thoughts for the student
-        "editor.inlineSuggest.enabled": false,
-        "github.copilot.editor.enableAutoCompletions": false,
-        "github.copilot.inlineSuggest.enable": false,
-
-        // Disable "Direct Code Injection"
-        // This prevents the AI from directly overwriting or fixing their files
-        "github.copilot.editor.enableCodeActions": false,
-        "github.copilot.chat.editor.enableCodeActions": false,
-
-        // Enable the Chat Sidebar as a "Tutor Only"
-        "github.copilot.chat.enabled": true,
-
-        // Standard Python settings for clean coding
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": true,
-        "editor.formatOnSave": true
-      }
+    "name": "WiByte Lab",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "features": {
+        "ghcr.io/devcontainers/features/desktop-lite:1": { "version": "latest" }
+    },
+    "forwardPorts": [6080],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                // These lines turn off the "Ghost Writing" 
+                // even if the student's account tries to turn it on.
+                "editor.inlineSuggest.enabled": false,
+                "github.copilot.editor.enableAutoCompletions": false,
+                "github.copilot.inlineSuggest.enable": false
+            }
+        }
     }
-  },
-  // Ensure the GUI environment (Desktop Lite) is ready for Turtle/Tkinter
-  "features": {
-    "ghcr.io/devcontainers/features/desktop-lite:1": {}
-  },
-  "remoteUser": "vscode"
 }
