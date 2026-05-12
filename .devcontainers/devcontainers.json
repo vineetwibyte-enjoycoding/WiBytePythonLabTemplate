@@ -48,7 +48,8 @@
                 "github.copilot.chat.editor.enableCodeActions": false,
                 "github.copilot.chat.runCommand.enabled": false
 
-
+                "workbench.tips.enabled": false,
+                "inlineChat.showDirectAction": false
 
                 
                 // --- 3. PERFORMANCE: "VANILLA" SPEED ---
