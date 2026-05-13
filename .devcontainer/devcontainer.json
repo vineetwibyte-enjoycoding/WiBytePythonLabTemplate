@@ -1,17 +1,27 @@
 {
-    "name": "WiByte Lab",
+    "name": "WiByte Stable Lab",
     "image": "mcr.microsoft.com/devcontainers/python:3.11",
     "features": {
-        "ghcr.io/devcontainers/features/desktop-lite:1": {
-            "version": "latest"
-        }
+        "ghcr.io/devcontainers/features/desktop-lite:1": {}
     },
     "forwardPorts": [6080],
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python"
-            ]
+                "ms-python.python",
+                "github.copilot"
+            ],
+            "settings": {
+                // Disables the "Quick Fix" lightbulb so students must fix their own typos
+                "editor.lightbulb.enabled": "off",
+                "github.copilot.editor.enableCodeActions": false,
+
+                // Standard coding aids (IntelliSense) stay active
+                "editor.suggestOnTriggerCharacters": true,
+                "editor.parameterHints.enabled": true
+            }
         }
-    }
+    },
+    // This command ensures the instruction file opens for the student immediately
+    "postCreateCommand": "code README.md"
 }
