@@ -22,6 +22,8 @@
 
                 "github.copilot.editor.enableAutoCompletions": false,
                 "github.copilot.inlineSuggest.enabled": false, 
+                "inlineChat.askInChat": false,
+                "github.copilot.chat.inlineChat.enabled": false
 
                 // This ensures the README is the first thing they see
                 "workbench.startupEditor": "readme"
