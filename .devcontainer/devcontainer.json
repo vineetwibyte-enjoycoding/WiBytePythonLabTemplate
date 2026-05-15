@@ -21,10 +21,12 @@
                 "editor.parameterHints.enabled": true,
 
                 "github.copilot.editor.enableAutoCompletions": false,
-                "github.copilot.inlineSuggest.enabled": false
+                "github.copilot.inlineSuggest.enabled": false, 
+
+                // This ensures the README is the first thing they see
+                "workbench.startupEditor": "readme"
             }
         }
     },
     // This command ensures the instruction file opens for the student immediately
-    "postCreateCommand": "code readme.md"
 }
