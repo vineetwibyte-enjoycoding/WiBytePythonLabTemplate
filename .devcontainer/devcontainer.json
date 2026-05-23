@@ -27,6 +27,6 @@
             }
         }
     },
-    // This command installs Turtle/Tkinter as needed. 
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk"
+    // This command installs Turtle/Tkinter as needed. Also, install pyfiglet and colorama
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && sudo pip install colorama pyfiglet"
 }
