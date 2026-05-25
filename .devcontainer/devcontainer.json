@@ -48,7 +48,6 @@
       }
     }
   },
-
-  // This command installs Turtle/Tkinter as needed. Also, install pyfiglet and colorama
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && pip3 install colorama pyfiglet"
+  // This command installs tools, and forces the local editor to use the correct Python interpreter path
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && pip3 install colorama pyfiglet && mkdir -p .vscode && echo '{\n  \"python.defaultInterpreterPath\": \"/usr/local/bin/python3\"\n}' > .vscode/settings.json"
 }
