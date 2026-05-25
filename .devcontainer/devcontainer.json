@@ -1,32 +1,52 @@
 {
-    "name": "WiByte Python Lab",
-    "image": "mcr.microsoft.com/devcontainers/python:3.11",
-    "features": {
-        "ghcr.io/devcontainers/features/desktop-lite:1": {}
-    },
-    "forwardPorts": [6080],
-    "customizations": {
-        "vscode": {
-            "extensions": [
-               "github.copilot", 
-               "ms-python.python",
-            ],
-            "settings": {
-                // Disables the "Quick Fix" lightbulb so students must fix their own typos
+  "name": "WiByte Python Lab",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
+  "forwardPorts": [6080],
 
-                // Efficacy of all of this and many other experiments is debatable. Ctrl + i could not be tamed, And the sidebar chat also looks unpredictable. 
-                "editor.lightbulb.enabled": "off",
-                "github.copilot.editor.enableCodeActions": false,
+  // ALIGN TERMINAL PATH: Prioritizes the developer Python environment
+  "containerEnv": {
+    "PATH": "/usr/local/bin:${localEnv:PATH}"
+  },
 
-                // Standard coding aids (IntelliSense) stay active
-                "editor.suggestOnTriggerCharacters": true,
-                "editor.parameterHints.enabled": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.copilot", 
+        "ms-python.python"
+      ],
+      "settings": {
+        // Tells the VS Code "Play" button exactly which Python engine to trigger
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
 
-                // This ensures the README is the first thing they see
-                "workbench.startupEditor": "readme"
-            }
-        }
-    },
-    // This command installs Turtle/Tkinter as needed. Also, install pyfiglet and colorama
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && sudo pip install colorama pyfiglet"
+        // Hides the background package installation folders from the student's file panel
+        "files.exclude": {
+          "**/*.dist-info": true,
+          "**/colorama": true,
+          "**/pyfiglet": true,
+          "**/*.pyc": true,
+          "**/__pycache__": true
+        },
+
+        // Disables the "Quick Fix" lightbulb so students must fix their own typos
+
+        // Efficacy of all of this and many other experiments is debatable. Ctrl + i could not be tamed, And the sidebar chat also looks unpredictable. 
+        "editor.lightbulb.enabled": "off",
+        "github.copilot.editor.enableCodeActions": false,
+
+        // Standard coding aids (IntelliSense) stay active
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.parameterHints.enabled": true,
+
+        // This ensures the README is the first thing they see
+        "workbench.startupEditor": "readme"
+      }
+    }
+  },
+
+  // This command installs Turtle/Tkinter as needed. Also, install pyfiglet and colorama
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && pip3 install colorama pyfiglet"
 }
