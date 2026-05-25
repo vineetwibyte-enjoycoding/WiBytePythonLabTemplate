@@ -9,7 +9,8 @@
 
   // ALIGN TERMINAL PATH: Prioritizes the developer Python environment
   "containerEnv": {
-    "PATH": "/usr/local/bin:${localEnv:PATH}"
+    "PATH": "/usr/local/bin:${localEnv:PATH}",
+    "PATH_TO_PYTHON": "/usr/local/bin/python3"
   },
 
   "customizations": {
