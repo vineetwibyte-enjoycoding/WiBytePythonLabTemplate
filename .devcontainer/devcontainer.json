@@ -8,6 +8,7 @@
   "forwardPorts": [6080],
 
   // ALIGN TERMINAL PATH: Prioritizes the developer Python environment
+  // PATH_TO_PYTHON was needed to ensure the run button also responds to the correct (usr/local/bin) path
   "containerEnv": {
     "PATH": "/usr/local/bin:${localEnv:PATH}",
     "PATH_TO_PYTHON": "/usr/local/bin/python3"
