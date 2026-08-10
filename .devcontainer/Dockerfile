@@ -13,11 +13,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11vnc \
     fluxbox \
-    websockify \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 # Pre-install Python libraries directly into the global site-packages
-RUN pip install --no-cache-dir colorama pyfiglet
+RUN pip install --no-cache-dir websockify colorama pyfiglet
 
 WORKDIR /workspaces/WiBytePythonLabDemo

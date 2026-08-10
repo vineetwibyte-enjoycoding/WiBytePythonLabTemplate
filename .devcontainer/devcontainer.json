@@ -4,6 +4,48 @@
     "dockerfile": "Dockerfile"
   },
 
+  "containerEnv": {
+    "DISPLAY": ":1"
+  },
+
+  // ==============================================================================
+  // PORT FORWARDING & VISIBILITY
+  // Port 6080 is explicitly marked PUBLIC to bypass browser third-party cookie
+  // and OAuth restrictions (especially on Chromebooks and school networks).
+  // ==============================================================================
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "Desktop (noVNC)",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+
+  // ==============================================================================
+  // PROCESS MANAGEMENT
+  // Boots supervisord on container startup, resume, or restart.
+  // ==============================================================================
+  "postStartCommand": "supervisord -c /workspaces/${localWorkspaceFolderBasename}/.devcontainer/supervisord.conf &",
+
+  // ==============================================================================
+  // CODESPACES INFRASTRUCTURE & RESOURCE CONFIGURATION
+  // 1. Fixed idle timeout to 10 minutes to auto-shutdown abandoned sessions.
+  // 2. Pins container hardware specs (2 cores, 4GB RAM) for predictable execution.
+  // ==============================================================================
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  },
+ 
+  "options": {
+    "defaultIdleTimeoutMinutes": 10
+  },
+
+  // ==============================================================================
+  // VS CODE ENVIRONMENT & EXTENSIONS
+  // ==============================================================================
   "customizations": {
     "vscode": {
       "extensions": [
@@ -11,10 +53,8 @@
         "ms-python.python"
       ],
       "settings": {
-        // Points the VS Code "Play" button directly to the single Python binary
+        "security.workspace.trust.enabled": false,
         "python.defaultInterpreterPath": "/usr/local/bin/python3",
-
-        // Hides background package folders from the student file panel
         "files.exclude": {
           "**/*.dist-info": true,
           "**/colorama": true,
@@ -22,22 +62,12 @@
           "**/*.pyc": true,
           "**/__pycache__": true
         },
-
-        // Pedagogy settings: disables automatic code actions/lightbulbs
         "editor.lightbulb.enabled": "off",
         "github.copilot.editor.enableCodeActions": false,
-
-        // Standard coding aids (IntelliSense) stay active
         "editor.suggestOnTriggerCharacters": true,
         "editor.parameterHints.enabled": true,
-
-        // Ensures the README is the first thing students see
         "workbench.startupEditor": "readme"
       }
     }
-  },
-  "remoteUser": "root"
+  }
 }
-  
- 
- 
