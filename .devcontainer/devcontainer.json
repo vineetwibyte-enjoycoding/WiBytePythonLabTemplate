@@ -88,7 +88,6 @@
         "terminal.integrated.fontSize": 15,
         "terminal.integrated.cursorBlinking": true,
         "terminal.integrated.defaultProfile.linux": "bash",
-        "workbench.panel.defaultLocation": "right"
       }
     }
   }
