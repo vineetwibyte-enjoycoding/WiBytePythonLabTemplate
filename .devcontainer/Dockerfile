@@ -10,6 +10,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     openssh-client \
     python3-tk \
+    xvfb \
+    x11vnc \
+    fluxbox \
+    websockify \
+    supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 # Pre-install Python libraries directly into the global site-packages
