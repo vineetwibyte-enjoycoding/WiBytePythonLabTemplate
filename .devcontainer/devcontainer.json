@@ -21,6 +21,10 @@
       "visibility": "public"
     }
   },
+  // Hide all other ports (to prevent clutter and confusion). 
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
 
   // ==============================================================================
   // PROCESS MANAGEMENT
