@@ -31,7 +31,7 @@
   // Boots supervisord on container startup, resume, or restart.
   // ==============================================================================
   "postStartCommand": "supervisord -c /workspaces/${localWorkspaceFolderBasename}/.devcontainer/supervisord.conf &",
-  "postCreateCommand": "echo \"export PS1='\\033[01;32mWiByte Python Lab 2.0\\033[00m >> '\" >> ~/.bashrc",
+  "postCreateCommand": "echo \"export DISPLAY=:1\" >> ~/.bashrc && echo \"export PS1='\\[\\033[01;32m\\]WiByte Python Lab 2.0\\[\\033[00m\\] >> '\" >> ~/.bashrc",
 
   // ==============================================================================
   // CODESPACES INFRASTRUCTURE & RESOURCE CONFIGURATION
