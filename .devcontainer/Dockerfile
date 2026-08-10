@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     netcat-openbsd \
     xvfb \
     x11vnc \
-    openbox \
+    fluxbox \
     novnc \
     python3-tk \
     && rm -rf /var/lib/apt/lists/*
