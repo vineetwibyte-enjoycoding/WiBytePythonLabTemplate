@@ -38,7 +38,7 @@
   // Boots supervisord on container startup, resume, or restart.
   // ==============================================================================
 
-  "postStartCommand": "bash -c 'until (echo > /dev/tcp/127.0.0.1/5901) 2>/dev/null && (echo > /dev/tcp/127.0.0.1/6080) 2>/dev/null; do sleep 1; done; echo -e \"\\n\\033[1;32m=== For Turtle/Tkinter, wait for port 6080 (See Ports tab) -- may take a few seconds -- and then run the project. ===\\033[0m\\n\"'",
+  "postStartCommand": "bash .devcontainer/init.sh",
   "postCreateCommand": "echo \"export DISPLAY=:1\" >> ~/.bashrc && echo \"export PS1='\\[\\033[01;32m\\]WiByte Python Lab 2.0\\[\\033[00m\\] >> '\" >> ~/.bashrc && echo \"alias vnc-rerun='sudo pkill -f fluxbox; sudo pkill -f websockify; sleep 1; nohup /usr/local/share/desktop-lite/init.sh > /tmp/desktop-lite.log 2>&1 &'\" >> ~/.bashrc",
   
   // ==============================================================================
