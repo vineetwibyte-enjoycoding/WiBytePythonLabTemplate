@@ -1,26 +1,19 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
+FROM mcr.microsoft.com/devcontainers/python:3.11
 
-# Prevent interactive prompts during apt installation
+# Avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install system utilities, X11 stack, and Tkinter C-bindings
-RUN apt-get update && apt-get install -y \
-    procps \
-    psmisc \
-    netcat-openbsd \
-    xvfb \
-    x11vnc \
-    fluxbox \
-    novnc \
+# Install system dependencies for Tkinter
+RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-tk \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Pre-compile Python packages into /usr/local/bin
+# Install curriculum Python packages globally
 RUN pip install --no-cache-dir \
-    websockify \
-    pillow \
     colorama \
-    pyfiglet
+    pyfiglet \
+    Pillow
 
 WORKDIR /workspaces/WiBytePythonLabDemo
 
