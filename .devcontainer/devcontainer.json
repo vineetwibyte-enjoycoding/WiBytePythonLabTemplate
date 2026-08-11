@@ -1,11 +1,11 @@
 {
-  "name": "WiByte Python Lab",
+  "name": "WiByte Python Lab 2.0",
   "build": {
     "dockerfile": "Dockerfile"
   },
 
-  "containerEnv": {
-    "DISPLAY": ":1"
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
 
   // ==============================================================================
@@ -13,14 +13,21 @@
   // Port 6080 is explicitly marked PUBLIC to bypass browser third-party cookie
   // and OAuth restrictions (especially on Chromebooks and school networks).
   // ==============================================================================
+
   "forwardPorts": [6080],
   "portsAttributes": {
+    "5901": {
+      "label": "Raw VNC Server (Internal)",
+      "onAutoForward": "ignore"
+    },
     "6080": {
       "label": "Desktop (noVNC)",
-      "onAutoForward": "notify",
+      "onAutoForward": "silent",
       "visibility": "public"
     }
   },
+
+
   // Hide all other ports (to prevent clutter and confusion). 
   "otherPortsAttributes": {
     "onAutoForward": "ignore"
@@ -30,7 +37,9 @@
   // PROCESS MANAGEMENT
   // Boots supervisord on container startup, resume, or restart.
   // ==============================================================================
-  "postStartCommand": "supervisord -c /workspaces/${localWorkspaceFolderBasename}/.devcontainer/supervisord.conf &",
+  "postStartCommand": "bash -c 'until (echo > /dev/tcp/127.0.0.1/5901) 2>/dev/null; do sleep 1; done; echo -e \"\\n\\033[1;32m=== WiByte Desktop Ready! (If needed: Ports tab -> 6080, or type: desktop) ===\\033[0m\\n\"'",
+
+  "postCreateCommand": "echo \"export DISPLAY=:1\" >> ~/.bashrc && echo \"alias desktop='echo http://localhost:6080/vnc.html?autoconnect=true\\&reconnect=true'\" >> ~/.bashrc && echo \"alias vnc-rerun='sudo pkill -f fluxbox; sudo pkill -f websockify; sleep 1; nohup /usr/local/share/desktop-lite/init.sh > /tmp/desktop-lite.log 2>&1 &'\" >> ~/.bashrc",
   "postCreateCommand": "echo \"export DISPLAY=:1\" >> ~/.bashrc && echo \"export PS1='\\[\\033[01;32m\\]WiByte Python Lab 2.0\\[\\033[00m\\] >> '\" >> ~/.bashrc",
 
   // ==============================================================================
