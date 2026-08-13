@@ -47,8 +47,6 @@ Also, keep in mind, we are *not* looking for fully polished products, we are loo
 
 ---
 
----
-
 ## 🤖 Using the AI Assistant (The Right Way)
 
 You still have access to the **Copilot Chat** on the right sidebar. Use it like a teaching assistant:
