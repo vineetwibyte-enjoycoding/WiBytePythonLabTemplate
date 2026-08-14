@@ -1,22 +1,21 @@
 {
   "name": "WiByte Python Lab 2.0",
-  "image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
+  //"image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
   
-  // No need these since using the image, but we will need these for building the image. (looks like)
-  //"build": {
-  //  "dockerfile": "Dockerfile"
-  //},
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
-  //"features": {
-  //  "ghcr.io/devcontainers/features/desktop-lite:1": {}
-  //},
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
 
 
   
   // ==============================================================================
   // PORT FORWARDING & VISIBILITY
   // Port 6080 is explicitly marked PUBLIC to bypass browser third-party cookie
-  // and OAuth restrictions (especially on Chromebooks and school networks).
+  // and OAuth restrictions (especially on Chromebooks and school networks). (Though this does not seem to work)
   // ==============================================================================
 
   "forwardPorts": [6080],
