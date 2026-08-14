@@ -1,5 +1,6 @@
 {
   "name": "WiByte Python Lab 2.0",
+  "image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -41,7 +42,7 @@
   // ==============================================================================
 
   "postStartCommand": "bash .devcontainer/init.sh",
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  // "postCreateCommand": "bash .devcontainer/setup.sh",
   // ==============================================================================
   // CODESPACES INFRASTRUCTURE & RESOURCE CONFIGURATION
   // 1. Fixed idle timeout to 10 minutes to auto-shutdown abandoned sessions.
