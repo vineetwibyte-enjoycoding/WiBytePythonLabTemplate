@@ -1,13 +1,7 @@
 {
   "name": "WiByte Python Lab 2.0",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-
-  "features": {
-    "ghcr.io/devcontainers/features/desktop-lite:1": {}
-  },
-
+  "image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
+  
   // ==============================================================================
   // PORT FORWARDING & VISIBILITY
   // Port 6080 is explicitly marked PUBLIC to bypass browser third-party cookie
