@@ -1,9 +1,6 @@
 name: Build and Push GHCR Container Image
 
 on:
-  push:
-    branches:
-      - CustomDevContainer # Runs strictly on the feature branch
   workflow_dispatch: # Allows manual trigger from GitHub Actions UI
 
 jobs:
@@ -35,4 +32,4 @@ jobs:
         with:
           imageName: ${{ env.image_name }}
           imageTag: test
-          push: true
+          push: always
