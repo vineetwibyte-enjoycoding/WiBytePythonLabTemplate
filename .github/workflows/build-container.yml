@@ -30,17 +30,9 @@ jobs:
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           echo "image_name=ghcr.io/${REPO_LOWER}" >> $GITHUB_ENV
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v5
+      - name: Build and Push DevContainer Image
+        uses: devcontainers/ci@v0.3
         with:
-          context: .
-          file: .devcontainer/Dockerfile
+          imageName: ${{ env.image_name }}
+          imageTag: test
           push: true
-          tags: |
-            ${{ env.image_name }}:test
-            ${{ env.image_name }}:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
