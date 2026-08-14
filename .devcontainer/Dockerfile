@@ -15,6 +15,11 @@ RUN pip install --no-cache-dir \
     pyfiglet \
     Pillow
 
+# System-wide configuration for DISPLAY, custom prompt, and recovery alias
+# Copy setup.sh into the build environment and run it
+COPY setup.sh /tmp/setup.sh
+RUN chmod +x /tmp/setup.sh && /tmp/setup.sh && rm /tmp/setup.sh
+
 WORKDIR /workspaces/WiBytePythonLabDemo
 
 
