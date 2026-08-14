@@ -1,6 +1,14 @@
 {
   "name": "WiByte Python Lab 2.0",
-  "image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
+
+
   
   // ==============================================================================
   // PORT FORWARDING & VISIBILITY
