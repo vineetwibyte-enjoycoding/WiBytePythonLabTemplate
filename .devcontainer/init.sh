@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# 1. Start the desktop-lite daemon in the background
-if [ -f /usr/local/share/desktop-init.sh ]; then
-    sudo /usr/local/share/desktop-init.sh > /tmp/desktop-init.log 2>&1 &
-fi
-
 # Poll internal VNC (5901) and web desktop (6080) sockets
 until (echo > /dev/tcp/127.0.0.1/5901) 2>/dev/null && (echo > /dev/tcp/127.0.0.1/6080) 2>/dev/null; do
   sleep 1
