@@ -1,6 +1,9 @@
 name: Build and Push GHCR Container Image
 
 on:
+  push:
+    branches:
+      - CustomDevContainer
   workflow_dispatch: # Allows manual trigger from GitHub Actions UI
 
 jobs:
