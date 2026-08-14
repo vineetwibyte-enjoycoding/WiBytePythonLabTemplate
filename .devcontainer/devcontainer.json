@@ -1,13 +1,15 @@
 {
   "name": "WiByte Python Lab 2.0",
   "image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  
+  // No need these since using the image, but we will need these for building the image. (looks like)
+  //"build": {
+  //  "dockerfile": "Dockerfile"
+  //},
 
-  "features": {
-    "ghcr.io/devcontainers/features/desktop-lite:1": {}
-  },
+  //"features": {
+  //  "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  //},
 
 
   
@@ -42,6 +44,7 @@
   // ==============================================================================
 
   "postStartCommand": "bash .devcontainer/init.sh",
+  // Commented out since this has been made a part of the Docker File. 
   // "postCreateCommand": "bash .devcontainer/setup.sh",
   // ==============================================================================
   // CODESPACES INFRASTRUCTURE & RESOURCE CONFIGURATION
