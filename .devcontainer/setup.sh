@@ -11,7 +11,7 @@ fi
 
 # 2. Set custom terminal prompt
 if ! grep -q "WiByte Python Lab" "$TARGET_RC"; then
-    echo "export PS1='\[\033[01;32m\]WiByte Python Lab 2.0\[\033[00m\] >> '" >> "$TARGET_RC"
+    echo "export PS1='\[\033[01;32m\]WiByte Python Lab 1.1\[\033[00m\] >> '" >> "$TARGET_RC"
 fi
 
 # 3. Secret Instructor Recovery Alias (vnc-rerun)
@@ -20,6 +20,6 @@ if ! grep -q "vnc-rerun" "$TARGET_RC"; then
     echo "$RECOVERY_CMD" >> "$TARGET_RC"
 fi
 
-echo "✅ Environment setup complete!"
+echo "✅ Environment Setup complete, Ports/UI customization starts now."
 
 
