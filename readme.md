@@ -1,12 +1,13 @@
-# 🐍 WiByte Python Lab 2.0
+# 🐍 WiByte Python Lab 1.1
 
 Welcome to your coding environment! This lab is designed to help you master Python logic and computational thinking and work on the projects from the WiByte Python curriculum, available at www.wibyte.in, and beyond.  
 
-## 🐢 Updates in WiByte Python Lab 2.0
-* Faster Setup Times.
+## 🐢 Updates in WiByte Python Lab 1.1
+* Refined Container creation -- moved post create pip installs to DockerFile
 * Improved Port setup -- You will see ONLY port 6080 now in the PORTS tab. 
 * Cleaner interface.
-* Distinct WiByte Python Lab 2.0 prompt.
+* Recovery mechanism for VNC.
+* Distinct WiByte Python Lab 1.1 prompt.
 
 ## 🐢 How to RUN Your Work (for regular projects)
 
@@ -20,7 +21,7 @@ Welcome to your coding environment! This lab is designed to help you master Pyth
 This lab uses a dedicated virtual desktop to show your Turtle/Tkinter graphics.
 
 * **Open the Desktop:** Go to the **Ports** tab (next to the Terminal) and click the link for **Port 6080**.
-* ****Port 6080** appears a few seconds after the workspace sets up**.
+* **Port 6080** appears a few seconds after the workspace sets up**.
 * **Pro Tips:** 
   * Show patience. Wait for port 6080 to appear before starting the project. 
   * Check the terminal -- Make sure the project ran without any syntax/logic errors.
