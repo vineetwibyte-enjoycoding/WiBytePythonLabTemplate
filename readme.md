@@ -1,12 +1,36 @@
-# 🐍 WiByte Python Lab
+# 🐍 WiByte Python Lab 1.1
 
-Welcome to your coding environment! This lab is designed to help you master Python logic and computational thinking. More details are available at www.wibyte.in. 
+Welcome to your coding environment! This lab is designed to help you master Python logic and computational thinking and work on the projects from the WiByte Python curriculum, available at www.wibyte.in, and beyond.  
 
-To get the most out of this session, please follow these setup rules.
+## 🐢 Updates in WiByte Python Lab 1.1
+* Refined Container creation -- moved post create pip installs to DockerFile
+* Improved Port setup -- You will see ONLY port 6080 now in the PORTS tab. 
+* Cleaner interface.
+* Recovery mechanism for VNC.
+* Distinct WiByte Python Lab 1.1 prompt.
+
+## 🐢 How to RUN Your Work (for regular projects)
+
+* **Option 1: Open the Terminal:** 
+  * Run python3 abc.py
+* **Option 2: RUN button** 
+  * You can also use the RUN button on top
+
+## 🐢 How to See Project's graphical output (for Turtle/Tkinter)
+
+This lab uses a dedicated virtual desktop to show your Turtle/Tkinter graphics.
+
+* **Open the Desktop:** Go to the **Ports** tab (next to the Terminal) and click the link for **Port 6080**.
+* **Port 6080** appears a few seconds after the workspace sets up**.
+* **Pro Tips:** 
+  * Show patience. Wait for port 6080 to appear before starting the project. 
+  * Check the terminal -- Make sure the project ran without any syntax/logic errors.
+  * Close the application -- NOT the browser before running again.
+  * This really does work like a breeze, but we need to be a bit patient!
+
 
 ---
-
-## 🛠️ Mandatory Lab Setup
+## 🛠️ AI Usage Guidelines
 
 Before you start coding, you must manually disable the **AI Auto-Pilot**. We want to see *your* logic, not the AI's suggestions! 
 
@@ -21,23 +45,6 @@ Also, keep in mind, we are *not* looking for fully polished products, we are loo
 2. **No "Magic" Fixes:**
    * If you make a mistake, you will see a red underline. 
    * We have disabled the "Lightbulb" auto-fix. You must read your code, identify the error, and fix it yourself. This is how you become a pro!
-
----
-
-
-## 🐢 How to See Your Work (for regular projects)
-
-* **Open the Terminal:** 
-* ** Run python abc.py**
-* ** You can also use the RUN button on top **
-
-
-## 🐢 How to See Your Work (for Turtle/Tkinter)
-
-This lab uses a dedicated virtual desktop to show your Turtle graphics.
-
-* **Open the Desktop:** Go to the **Ports** tab (next to the Terminal) and click the link for **Port 6080**.
-* **Pro Tip:** Keep this tab open side-by-side with your code so you can see your Turtle draw in real-time.
 
 ---
 

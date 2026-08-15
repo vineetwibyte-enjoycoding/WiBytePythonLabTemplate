@@ -1,30 +1,93 @@
 {
-  "name": "WiByte Python Lab",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "name": "WiByte Python Lab 1.1",
+  //"image": "ghcr.io/vineetwibyte-enjoycoding/wibytepythonlabtemplate:test",
   
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
-  "forwardPorts": [6080],
 
-  // ALIGN TERMINAL PATH: Prioritizes the developer Python environment
-  // PATH_TO_PYTHON was needed to ensure the run button also responds to the correct (usr/local/bin) path
-  "containerEnv": {
-    "PATH": "/usr/local/bin:${localEnv:PATH}",
-    "PATH_TO_PYTHON": "/usr/local/bin/python3"
+
+  
+  // ==============================================================================
+  // PORT FORWARDING & VISIBILITY
+  // Port 6080 is explicitly marked PUBLIC to bypass browser third-party cookie
+  // and OAuth restrictions (especially on Chromebooks and school networks). (Though this does not seem to work)
+  // ==============================================================================
+
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "5901": {
+      "label": "Raw VNC Server (Internal)",
+      "onAutoForward": "ignore"
+    },
+    "6080": {
+      "onAutoForward": "silent",
+      "visibility": "public", 
+      "elevateIfNeeded": true
+    }
   },
 
+
+  // Hide all other ports (to prevent clutter and confusion). 
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+
+  // ==============================================================================
+  // PROCESS MANAGEMENT
+  // Boots supervisord on container startup, resume, or restart.
+  // ==============================================================================
+
+  "postStartCommand": "bash .devcontainer/init.sh",
+  // Commented out since this has been made a part of the Docker File. 
+  // "postCreateCommand": "bash .devcontainer/setup.sh",
+  // ==============================================================================
+  // CODESPACES INFRASTRUCTURE & RESOURCE CONFIGURATION
+  // 1. Fixed idle timeout to 10 minutes to auto-shutdown abandoned sessions.
+  // 2. Pins container hardware specs (2 cores, 4GB RAM) for predictable execution.
+  // ==============================================================================
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  },
+ 
+  // ==============================================================================
+  // VS CODE ENVIRONMENT & EXTENSIONS
+  // ==============================================================================
   "customizations": {
     "vscode": {
       "extensions": [
-        "github.copilot", 
+        "github.copilot",
         "ms-python.python"
       ],
       "settings": {
-        // Tells the VS Code "Play" button exactly which Python engine to trigger
+        // --- Core Python & Security ---
+        "security.workspace.trust.enabled": false,
+        "security.workspace.trust.banner": "never",
         "python.defaultInterpreterPath": "/usr/local/bin/python3",
 
-        // Hides the background package installation folders from the student's file panel
+        // --- Suppress Extension & File Recommendation Pop-ups ---
+        "extensions.ignoreRecommendations": true,
+
+        // --- Suppress Git Prompts & Confirmations ---
+        "git.autofetch": false,
+        "git.confirmSync": false,
+        "git.enableSmartCommit": true,
+
+        // --- UI & Notification De-cluttering ---
+        "workbench.tips.enabled": false,
+        "editor.lightbulb.enabled": "off",
+        "github.copilot.editor.enableCodeActions": false,
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.parameterHints.enabled": true,
+        "workbench.startupEditor": "readme",
+
+        // --- Clean File Tree (Hide noise) ---
         "files.exclude": {
           "**/*.dist-info": true,
           "**/colorama": true,
@@ -33,21 +96,11 @@
           "**/__pycache__": true
         },
 
-        // Disables the "Quick Fix" lightbulb so students must fix their own typos
-
-        // Efficacy of all of this and many other experiments is debatable. Ctrl + i could not be tamed, And the sidebar chat also looks unpredictable. 
-        "editor.lightbulb.enabled": "off",
-        "github.copilot.editor.enableCodeActions": false,
-
-        // Standard coding aids (IntelliSense) stay active
-        "editor.suggestOnTriggerCharacters": true,
-        "editor.parameterHints.enabled": true,
-
-        // This ensures the README is the first thing they see
-        "workbench.startupEditor": "readme"
+        // --- Student Terminal Customizations ---
+        "terminal.integrated.fontSize": 15,
+        "terminal.integrated.cursorBlinking": true,
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
-  },
-  // This command installs tools, and forces the local editor to use the correct Python interpreter path
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-tk && pip3 install colorama pyfiglet"
+  }
 }
