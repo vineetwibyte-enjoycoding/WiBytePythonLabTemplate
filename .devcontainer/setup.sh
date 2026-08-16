@@ -9,10 +9,12 @@ if ! grep -q "DISPLAY=:1" "$TARGET_RC"; then
     echo "export DISPLAY=:1" >> "$TARGET_RC"
 fi
 
-# 2. Set custom terminal prompt
-if ! grep -q "WiByte Python Lab" "$TARGET_RC"; then
-    echo "export PS1='\[\033[01;32m\]WiByte Python Lab 1.1\[\033[00m\] >> '" >> "$TARGET_RC"
-fi
+# Target the explicit vscode user bashrc as well as global bashrc
+for RC_FILE in "/home/vscode/.bashrc" "/etc/bash.bashrc"; do
+    if [ -f "$RC_FILE" ] && ! grep -q "WiByte Python Lab" "$RC_FILE"; then
+        echo 'export PS1="\[\033[01;32m\]WiByte Python Lab 1.1\[\033[00m\] >> "' >> "$RC_FILE"
+    fi
+done
 
 # 3. Secret Instructor Recovery Alias (vnc-rerun)
 if ! grep -q "vnc-rerun" "$TARGET_RC"; then
